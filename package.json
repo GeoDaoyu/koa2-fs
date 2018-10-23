@@ -1,0 +1,27 @@
+{
+  "name": "koa2-fs",
+  "version": "1.0.0",
+  "description": "A prj base on koa2.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeoDaoyu/koa2-fs.git"
+  },
+  "keywords": [
+    "koa2",
+    "fs"
+  ],
+  "author": "zhanggy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeoDaoyu/koa2-fs/issues"
+  },
+  "homepage": "https://github.com/GeoDaoyu/koa2-fs#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  }
+}

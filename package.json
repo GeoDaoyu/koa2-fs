@@ -2,9 +2,8 @@
   "name": "koa2-fs",
   "version": "1.0.0",
   "description": "A prj base on koa2.",
-  "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +21,9 @@
   },
   "homepage": "https://github.com/GeoDaoyu/koa2-fs#readme",
   "dependencies": {
-    "koa": "^2.5.3"
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }

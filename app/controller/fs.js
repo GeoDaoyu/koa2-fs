@@ -1,11 +1,13 @@
-const downloadService = require('./../service/download')
-const uploadService = require('./../service/upload')
+const fsService = require('../service/fsService')
 
 module.exports = {
   async getFile (ctx) {
-    await downloadService.impl(ctx)
+    await fsService.download(ctx)
   },
   async setFile (ctx) {
-    await uploadService.impl(ctx)
+    await fsService.upload(ctx)
+  },
+  async deleteFile (ctx) {
+    await fsService.delete(ctx)
   }
 }

@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const cfg = require('../../config/config.default')
+const cfg = require('../../../config/config.default')
 
 module.exports = {
   async impl (ctx) {

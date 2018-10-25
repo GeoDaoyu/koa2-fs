@@ -1,41 +1,31 @@
 # koa2-fs
+
+这打算是一个基于Koa实现的文服务器，提供上传、下载和删除文件的功能。
+
 ## 目录结构
-参考Egg.js
-结构如下:
-koa-fs
+参考Egg.js，目录结构如下:
+
+```
+koa2-fs
 ├── package.json
-├── app.js (项目入口)
-├── agent.js (可选)
+├── app.js (项目入口文件)
 ├── app
-|   ├── router.js
 │   ├── controller
-│   |   └── home.js
-│   ├── service (可选)
-│   |   └── user.js
-│   ├── middleware (可选)
-│   |   └── response_time.js
-│   ├── schedule (可选)
-│   |   └── my_task.js
-│   ├── public (可选)
-│   |   └── reset.css
-│   ├── view (可选)
-│   |   └── home.tpl
-│   └── extend (可选)
-│       ├── helper.js (可选)
-│       ├── request.js (可选)
-│       ├── response.js (可选)
-│       ├── context.js (可选)
-│       ├── application.js (可选)
-│       └── agent.js (可选)
+│   |   └── fs.js
+│   ├── helper 
+│   |   └── cors.js (跨域处理)
+│   ├── router (可选)
+│   │   ├── router.js (路由总配置)
+│   |   └── api.js (RESTful API 路由配置)
+│   ├── servie
+│   │   ├── impl
+│   │   │   ├── delete.js
+│   │   │   ├── upload.js
+│   |   │   └── download.js
+│   |   └── fsService.js
 ├── config
-|   ├── plugin.js
-|   ├── config.default.js
-│   ├── config.prod.js
-|   ├── config.test.js (可选)
-|   ├── config.local.js (可选)
-|   └── config.unittest.js (可选)
-└── test
-    ├── middleware
-    |   └── response_time.test.js
-    └── controller
-        └── home.test.js
+│   └──  config.default.js (服务器配置文件)
+└── fs (文件管理文件夹)
+    ├──  public (公有文件文件夹)
+    └──  private (私有文件文件夹)
+```

@@ -59,5 +59,8 @@ typings/
 
 # next.js build output
 .next
+#vscode
 /.vscode
-/fs
+#fs
+fs/public/
+fs/pravite/

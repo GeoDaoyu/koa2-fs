@@ -1,7 +1,7 @@
 {
   "name": "koa2-fs",
   "version": "1.0.0",
-  "description": "A prj base on koa2.",
+  "description": "A prj based on koa2.",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -8,6 +8,11 @@ module.exports = {
     await fsService.upload(ctx)
   },
   async deleteFile (ctx) {
-    await fsService.delete(ctx)
+    if (await fsService.delete(ctx)) {
+      ctx.response.status = 200
+      ctx.body ={
+        delete: 1
+      }
+    }
   }
 }

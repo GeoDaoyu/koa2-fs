@@ -2,7 +2,7 @@
  * RESTful API 子路由
  */
 const router = require('koa-router')()
-const fsController = require('../controller/fs')
+const fsController = require('../controller/fsController')
 
 const routers = router
   .get('/public/:filename', fsController.getFile)

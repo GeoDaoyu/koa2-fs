@@ -1,11 +1,13 @@
 const fs = require('fs')
 const cfg = require('../../../config/config.default')
 const path = require('path')
+
+
+const unlink = require('util').promisify(fs.unlink)
+
 module.exports = {
   async impl (ctx) {
-    console.log(path.join(cfg.root, ctx.path))
-    fs.unlink(path.join(cfg.root, ctx.path), (err) => {
-      
-    })
+    await unlink(path.join(cfg.root, ctx.path))
+    return true
   }
 }

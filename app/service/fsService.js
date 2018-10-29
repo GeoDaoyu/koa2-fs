@@ -10,6 +10,6 @@ module.exports = {
     await downloadImpl.impl(ctx)
   },
   async delete (ctx) {
-    await deleteImpl.impl(ctx)
+    return await deleteImpl.impl(ctx)
   }
 }

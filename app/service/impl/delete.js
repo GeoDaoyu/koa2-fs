@@ -7,7 +7,7 @@ const unlink = require('util').promisify(fs.unlink)
 
 module.exports = {
   async impl (ctx) {
-    await unlink(path.join(cfg.root, ctx.path))
+    await unlink(path.join(cfg.root, decodeURI(ctx.path)))
     return true
   }
 }

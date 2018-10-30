@@ -5,10 +5,11 @@ const router = require('koa-router')()
 const fsController = require('../controller/fsController')
 
 const routers = router
-  .get('/public/:filename', fsController.getFile)
-  .get('/pravite/:username/:filename', fsController.getFile)
-  .post('/public/:filename', fsController.setFile)
-  .delete('/public/:filename', fsController.deleteFile)
-  .delete('/public/:username/:filename', fsController.deleteFile)
+  .get('/:type/:filename', fsController.getFile)
+  .get('/:type/:username/:filename', fsController.getFile)
+  .post('/:type/:filename', fsController.setFile)
+  .post('/:type/:username/:filename', fsController.setFile)
+  .delete('/:type/:filename', fsController.deleteFile)
+  .delete('/:type/:username/:filename', fsController.deleteFile)
 
 module.exports = routers

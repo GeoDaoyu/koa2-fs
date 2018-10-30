@@ -4,7 +4,7 @@ const deleteImpl = require('./impl/delete')
 
 module.exports = {
   async upload (ctx) {
-    await uploadImpl.impl(ctx)
+    return await uploadImpl.impl(ctx)
   },
   async download (ctx) {
     await downloadImpl.impl(ctx)

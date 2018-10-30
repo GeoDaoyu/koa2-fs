@@ -5,14 +5,9 @@ module.exports = {
     await fsService.download(ctx)
   },
   async setFile (ctx) {
-    await fsService.upload(ctx)
+    ctx.body = await fsService.upload(ctx)
   },
   async deleteFile (ctx) {
-    if (await fsService.delete(ctx)) {
-      ctx.response.status = 200
-      ctx.body ={
-        delete: 1
-      }
-    }
+    ctx.body = await fsService.delete(ctx)
   }
 }

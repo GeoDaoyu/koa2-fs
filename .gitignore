@@ -62,6 +62,7 @@ typings/
 #vscode
 /.vscode
 #fs
-fs/public/
-fs/pravite/
+/fs/public
+/fs/private
+#package
 /package-lock.json

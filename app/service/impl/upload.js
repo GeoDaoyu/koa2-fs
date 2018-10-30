@@ -9,7 +9,7 @@ module.exports = {
     if (ctx.params.type === 'public') {
       filePath = await this.publicUp(ctx)
     } else if (ctx.params.type === 'private') {
-      this.privateUp(ctx)
+      filePath = this.privateUp(ctx)
     } else {
       ctx.throw(400)
     }
@@ -34,12 +34,19 @@ module.exports = {
   },
 
   async privateUp (ctx) {
-
+    let filePaths = []
+    const filePath = path.join(cfg.root, decodeURI(ctx.path))
+    const exist = await exists(filePath)
+    if (!exist) {
+      filePaths.push(await this.publicUp(ctx))
+    } else {
+      // 新建文件夹，然后再上传
+    }
+    return filePaths
   },
 
   async exsitFolderOrFile (p) {
     const exist = await exists(p)
-    console.log(exist)
     if (exist) return true
     return false
   }

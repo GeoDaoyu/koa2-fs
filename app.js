@@ -8,6 +8,9 @@ const app = new Koa()
 const cors = require('./app/helper/cors')
 app.use(cors)
 
+const errorHandle = require('./app/helper/error')
+app.use(errorHandle)
+
 const koaBody = require('koa-body')
 app.use(koaBody({
   multipart: true,

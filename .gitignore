@@ -64,3 +64,4 @@ typings/
 #fs
 fs/public/
 fs/pravite/
+/package-lock.json

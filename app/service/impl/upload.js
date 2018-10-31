@@ -39,7 +39,6 @@ module.exports = {
     let filePaths = []
     const folderPath = path.join(cfg.root, ctx.path.substring(0, ctx.path.lastIndexOf('/')))
     const exist = await exists(folderPath)
-    console.log(exist)
     if (!exist) {
       await mkdir(folderPath)
     }

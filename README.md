@@ -2,6 +2,11 @@
 
 这打算是一个基于Koa实现的文件服务器，提供上传、下载和删除文件的功能。
 
+## 环境准备
+
++ 操作系统：Windows
++ 安装nodemon ``` npm i nodemon -g ```
+
 ## 目录结构
 参考Egg.js，目录结构如下:
 
@@ -11,9 +16,10 @@ koa2-fs
 ├── app.js (项目入口文件)
 ├── app
 │   ├── controller
-│   |   └── fs.js
-│   ├── helper 
-│   |   └── cors.js (跨域处理)
+│   |   └── fsController.js
+│   ├── helper
+│   │   ├── cors.js (跨域处理)
+│   |   └── error.js (异常处理)
 │   ├── router (可选)
 │   │   ├── router.js (路由总配置)
 │   |   └── api.js (RESTful API 路由配置)
@@ -29,3 +35,12 @@ koa2-fs
     ├──  public (公有文件文件夹)
     └──  private (私有文件文件夹)
 ```
+
+## 运行启动
+
+~~~ shell
+cd koa2-fs
+npm install
+npm start
+~~~
+

@@ -1,6 +1,8 @@
 const path = require('path')
 const fs = require('fs')
-const exists = require('util').promisify(fs.exists)
+const promisify = require('util').promisify
+const exists = promisify(fs.exists)
+const mkdir = promisify(fs.mkdir)
 const cfg = require('../../../config/config.default')
 
 module.exports = {
@@ -35,19 +37,13 @@ module.exports = {
 
   async privateUp (ctx) {
     let filePaths = []
-    const filePath = path.join(cfg.root, decodeURI(ctx.path))
-    const exist = await exists(filePath)
+    const folderPath = path.join(cfg.root, ctx.path.substring(0, ctx.path.lastIndexOf('/')))
+    const exist = await exists(folderPath)
+    console.log(exist)
     if (!exist) {
-      filePaths.push(await this.publicUp(ctx))
-    } else {
-      // 新建文件夹，然后再上传
+      await mkdir(folderPath)
     }
+    filePaths.push(await this.publicUp(ctx))
     return filePaths
-  },
-
-  async exsitFolderOrFile (p) {
-    const exist = await exists(p)
-    if (exist) return true
-    return false
   }
 }

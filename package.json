@@ -1,6 +1,6 @@
 {
   "name": "koa2-fs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A prj based on koa2.",
   "scripts": {
     "start": "nodemon app.js",
@@ -14,7 +14,7 @@
     "koa2",
     "fs"
   ],
-  "author": "zhanggy",
+  "author": "GeoDaoyu <geodaoyu@foxmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GeoDaoyu/koa2-fs/issues"
@@ -28,5 +28,9 @@
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa2-cors": "^2.0.6"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 6.0.0"
   }
 }

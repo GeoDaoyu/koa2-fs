@@ -5,7 +5,8 @@
 ## 环境准备
 
 + 操作系统：Windows
-+ 安装nodemon ``` npm i nodemon -g ```
++ node：>= 8.0.0
++ 安装nodemon ``` npm i nodemon -g 或者 npm i nodemon -D```
 
 ## 目录结构
 参考Egg.js，目录结构如下:
@@ -32,7 +33,7 @@ koa2-fs
 ├── config
 │   └──  config.default.js (服务器配置文件)
 └── fs (文件管理文件夹)
-    ├──  public (公有文件文件夹)
+    ├──  public (公共文件文件夹)
     └──  private (私有文件文件夹)
 ```
 
@@ -44,3 +45,14 @@ npm install
 npm start
 ~~~
 
+## 未完待续
+
++ 功能
+  + 移动文件夹：从私有文件夹移动到公共文件夹
+  + 更新文件：
++ 测试
+  准备用[Jest](https://jestjs.io/zh-Hans/)测试api接口
++ 混淆压缩
+  没想好用什么做
++ 部署
+  准备用[pm2](http://pm2.keymetrics.io/)管理进程

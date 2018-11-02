@@ -11,7 +11,7 @@ module.exports = {
     if (ctx.params.type === 'public') {
       filePath = await this.publicUp(ctx)
     } else if (ctx.params.type === 'private') {
-      filePath = this.privateUp(ctx)
+      filePath = await this.privateUp(ctx)
     } else {
       ctx.throw(400)
     }

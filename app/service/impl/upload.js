@@ -1,11 +1,12 @@
-const path = require('path')
-const fs = require('fs')
-const promisify = require('util').promisify
+import path from 'path'
+import fs from 'fs'
+import { promisify } from 'util'
+import cfg from '../../../config/config.default.js'
+
 const exists = promisify(fs.exists)
 const mkdir = promisify(fs.mkdir)
-const cfg = require('../../../config/config.default')
 
-module.exports = {
+export default {
   async impl (ctx) {
     let filePath = ''
     if (ctx.params.type === 'public') {

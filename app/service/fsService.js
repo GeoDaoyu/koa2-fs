@@ -1,8 +1,8 @@
-const uploadImpl = require('./impl/upload')
-const downloadImpl = require('./impl/download')
-const deleteImpl = require('./impl/delete')
+import uploadImpl from './impl/upload.js'
+import downloadImpl from './impl/download.js'
+import deleteImpl from './impl/delete.js'
 
-module.exports = {
+export default {
   async upload (ctx) {
     return await uploadImpl.impl(ctx)
   },

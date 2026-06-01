@@ -1,9 +1,7 @@
-/**
- * 整合所有路由
- */
-const router = require('koa-router')()
+import Router from '@koa/router'
+import api from './api.js'
 
-const api = require('./api')
+const router = new Router()
 router.use('/fs', api.routes(), api.allowedMethods())
 
-module.exports = router
+export default router

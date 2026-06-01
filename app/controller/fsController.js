@@ -1,6 +1,6 @@
-const fsService = require('../service/fsService')
+import fsService from '../service/fsService.js'
 
-module.exports = {
+export default {
   async getFile (ctx) {
     await fsService.download(ctx)
   },

@@ -1,10 +1,7 @@
-/**
- * RESTful API 子路由
- */
-const router = require('koa-router')()
-const fsController = require('../controller/fsController')
+import Router from '@koa/router'
+import fsController from '../controller/fsController.js'
 
-const routers = router
+const router = new Router()
   .get('/:type/:filename', fsController.getFile)
   .get('/:type/:username/:filename', fsController.getFile)
   .post('/:type/:filename', fsController.setFile)
@@ -12,4 +9,4 @@ const routers = router
   .delete('/:type/:filename', fsController.deleteFile)
   .delete('/:type/:username/:filename', fsController.deleteFile)
 
-module.exports = routers
+export default router

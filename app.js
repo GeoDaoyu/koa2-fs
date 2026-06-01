@@ -1,25 +1,22 @@
-const chalk = require('chalk')
+import chalk from 'chalk'
+import cfg from './config/config.default.js'
+import Koa from 'koa'
+import cors from './app/helper/cors.js'
+import errorHandle from './app/helper/error.js'
+import { koaBody } from 'koa-body'
+import routers from './app/router/router.js'
 
-const cfg = require('./config/config.default')
-
-const Koa = require('koa')
 const app = new Koa()
 
-const cors = require('./app/helper/cors')
 app.use(cors)
-
-const errorHandle = require('./app/helper/error')
 app.use(errorHandle)
-
-const koaBody = require('koa-body')
 app.use(koaBody({
   multipart: true,
   formidable: {
-    maxFileSize: 200*1024*1024
+    maxFileSize: 200 * 1024 * 1024
   }
 }))
 
-const routers = require('./app/router/router')
 app.use(routers.routes()).use(routers.allowedMethods())
 
 app.listen(cfg.port, cfg.host, () => {

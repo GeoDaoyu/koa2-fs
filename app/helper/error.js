@@ -1,5 +1,6 @@
-const chalk = require('chalk')
-module.exports = async (ctx, next) => {
+import chalk from 'chalk'
+
+export default async (ctx, next) => {
   try {
     await next();
   } catch (err) {

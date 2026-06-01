@@ -1,6 +1,7 @@
-const cors = require('koa2-cors')
-const cfg = require('../../config/config.default')
-module.exports = cors({
+import cors from 'koa2-cors'
+import cfg from '../../config/config.default.js'
+
+export default cors({
   origin: cfg.allowOrigin,
   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
   maxAge: 600,

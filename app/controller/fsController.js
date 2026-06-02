@@ -9,5 +9,8 @@ export default {
   },
   async deleteFile (ctx) {
     ctx.body = await fsService.delete(ctx)
+  },
+  async moveFile (ctx) {
+    ctx.body = await fsService.move(ctx)
   }
 }

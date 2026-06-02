@@ -1,6 +1,6 @@
 # koa2-fs
 
-这是一个基于Koa实现的文件服务器，提供上传、下载和删除文件的功能。
+这是一个基于Koa实现的文件服务器，提供上传、下载、删除、移动、更新和查询文件的功能。
 
 RESTful风格的API。
 
@@ -8,11 +8,10 @@ RESTful风格的API。
 
 ## 环境准备
 
-+ node：>= 8.0.0
++ node：>= 18.0.0
 + 安装nodemon ``` npm i nodemon -g 或者 npm i nodemon -D```
 
 ## 目录结构
-参考Egg.js，目录结构如下:
 
 ```
 koa2-fs
@@ -20,24 +19,28 @@ koa2-fs
 ├── app.js (项目入口文件)
 ├── app
 │   ├── controller
-│   |   └── fsController.js
+│   │   └── fsController.js
 │   ├── helper
 │   │   ├── cors.js (跨域处理)
-│   |   └── error.js (异常处理)
-│   ├── router (可选)
+│   │   └── error.js (异常处理)
+│   ├── router
 │   │   ├── router.js (路由总配置)
-│   |   └── api.js (RESTful API 路由配置)
-│   ├── servie
+│   │   └── api.js (RESTful API 路由配置)
+│   ├── service
 │   │   ├── impl
-│   │   │   ├── delete.js
 │   │   │   ├── upload.js
-│   |   │   └── download.js
-│   |   └── fsService.js
+│   │   │   ├── download.js
+│   │   │   ├── delete.js
+│   │   │   ├── move.js
+│   │   │   ├── update.js
+│   │   │   └── list.js
+│   │   └── fsService.js
 ├── config
-│   └──  config.default.js (服务器配置文件)
-└── fs (文件管理文件夹)
-    ├──  public (公共文件文件夹)
-    └──  private (私有文件文件夹)
+│   ├── config.default.js (服务器配置文件)
+│   └── config.prod.js (生产环境配置)
+└── fs (文件存储目录，运行时创建)
+    ├── public (公共文件)
+    └── private (私有文件)
 ```
 
 ## 运行启动
@@ -50,12 +53,11 @@ npm start
 
 ## 接口文档
 
+### 下载文件
+
 + **下载公有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/public/<filename>`
-
-**请求方式：**get
-**参数说明：**
+**接口地址:** `GET /fs/public/<filename>`
 
 | Property | Details |
 | -------- | ------- |
@@ -63,21 +65,18 @@ npm start
 
 + **下载私有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/private/<username>/<filename>`
-
-**请求方式：**get
+**接口地址:** `GET /fs/private/<username>/<filename>`
 
 | Property | Details |
 | -------- | ------- |
 | username | 用户名  |
 | filename | 文件名  |
 
+### 上传文件
+
 + **上传公有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/public/<filename>`
-
-**请求方式：**post
-**参数说明：**
+**接口地址:** `POST /fs/public/<filename>`
 
 | Property | Details |
 | -------- | ------- |
@@ -85,21 +84,39 @@ npm start
 
 + **上传私有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/private/<username>/<filename>`
-
-**请求方式：**post
+**接口地址:** `POST /fs/private/<username>/<filename>`
 
 | Property | Details |
 | -------- | ------- |
 | username | 用户名  |
 | filename | 文件名  |
 
+### 更新文件
+
++ **更新公有文件**
+
+**接口地址:** `PUT /fs/public/<filename>`
+
+| Property | Details |
+| -------- | ------- |
+| filename | 文件名（必须已存在）  |
+
++ **更新私有文件**
+
+**接口地址:** `PUT /fs/private/<username>/<filename>`
+
+| Property | Details |
+| -------- | ------- |
+| username | 用户名  |
+| filename | 文件名（必须已存在）  |
+
+> 更新文件时，在原位置覆盖写入，保留文件的创建时间（birthtime），修改时间（mtime）自动更新为当前时间。
+
+### 删除文件
+
 + **删除公有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/public/<filename>`
-
-**请求方式：**delete
-**参数说明：**
+**接口地址:** `DELETE /fs/public/<filename>`
 
 | Property | Details |
 | -------- | ------- |
@@ -107,20 +124,69 @@ npm start
 
 + **删除私有文件**
 
-**接口地址:**`http://127.0.0.1:3000/fs/private/<username>/<filename>`
-
-**请求方式：**delete
+**接口地址:** `DELETE /fs/private/<username>/<filename>`
 
 | Property | Details |
 | -------- | ------- |
 | username | 用户名  |
 | filename | 文件名  |
 
-## 未完待续
+### 移动文件
 
-+ 功能
-  + 移动文件夹：从私有文件夹移动到公共文件夹
-  + 更新文件：新文件替换旧文件，思考如何处理创建时间和修改时间
-  + 文件列表：查询所有文件、公共文件和私有文件
-+ 部署
-  准备用[pm2](http://pm2.keymetrics.io/)管理进程
++ **移动私有文件到公共文件夹**
+
+**接口地址:** `PATCH /fs/private/<username>/<filename>`
+
+**请求体:**
+
+``` json
+{
+  "targetType": "public"
+}
+```
+
+| Property | Details |
+| -------- | ------- |
+| username | 用户名  |
+| filename | 文件名  |
+| targetType | 目标文件夹类型（public 或 private）  |
+
+### 文件列表
+
++ **查询所有文件**
+
+**接口地址:** `GET /fs/list/all`
+
++ **查询公共文件**
+
+**接口地址:** `GET /fs/list/public`
+
++ **查询所有私有文件**
+
+**接口地址:** `GET /fs/list/private`
+
++ **查询指定用户的私有文件**
+
+**接口地址:** `GET /fs/list/private/<username>`
+
+| Property | Details |
+| -------- | ------- |
+| username | 用户名  |
+
+返回示例：
+
+``` json
+{
+  "success": true,
+  "count": 2,
+  "files": [
+    {
+      "name": "example.txt",
+      "path": "/path/to/fs/public/example.txt",
+      "size": 1024,
+      "birthtime": "2026-01-01T00:00:00.000Z",
+      "mtime": "2026-06-02T00:00:00.000Z"
+    }
+  ]
+}
+```

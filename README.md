@@ -1,4 +1,4 @@
-# koa2-fs
+# koa-fs
 
 这是一个基于Koa实现的文件服务器，提供上传、下载、删除、移动、更新和查询文件的功能。
 
@@ -14,7 +14,7 @@ RESTful风格的API。
 ## 目录结构
 
 ```
-koa2-fs
+koa-fs
 ├── package.json
 ├── app.js (项目入口文件)
 ├── app
@@ -46,7 +46,7 @@ koa2-fs
 ## 运行启动
 
 ~~~ shell
-cd koa2-fs
+cd koa-fs
 npm install
 npm start
 ~~~

@@ -1,5 +1,5 @@
 {
-  "name": "koa2-fs",
+  "name": "koa-fs",
   "version": "1.0.0",
   "description": "A file server based on koa.",
   "type": "module",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GeoDaoyu/koa2-fs.git"
+    "url": "git+https://github.com/GeoDaoyu/koa-fs.git"
   },
   "keywords": [
     "koa",
@@ -18,9 +18,9 @@
   "author": "GeoDaoyu <geodaoyu@foxmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GeoDaoyu/koa2-fs/issues"
+    "url": "https://github.com/GeoDaoyu/koa-fs/issues"
   },
-  "homepage": "https://github.com/GeoDaoyu/koa2-fs#readme",
+  "homepage": "https://github.com/GeoDaoyu/koa-fs#readme",
   "dependencies": {
     "@koa/router": "^15.6.0",
     "chalk": "^5.6.2",

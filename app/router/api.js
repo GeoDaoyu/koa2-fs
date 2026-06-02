@@ -2,6 +2,8 @@ import Router from '@koa/router'
 import fsController from '../controller/fsController.js'
 
 const router = new Router()
+  .get('/list/:type', fsController.listFiles)
+  .get('/list/:type/:username', fsController.listFiles)
   .get('/:type/:filename', fsController.getFile)
   .get('/:type/:username/:filename', fsController.getFile)
   .post('/:type/:filename', fsController.setFile)

@@ -15,5 +15,8 @@ export default {
   },
   async updateFile (ctx) {
     ctx.body = await fsService.update(ctx)
+  },
+  async listFiles (ctx) {
+    ctx.body = await fsService.list(ctx)
   }
 }

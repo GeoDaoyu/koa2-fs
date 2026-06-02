@@ -3,6 +3,7 @@ import downloadImpl from './impl/download.js'
 import deleteImpl from './impl/delete.js'
 import moveImpl from './impl/move.js'
 import updateImpl from './impl/update.js'
+import listImpl from './impl/list.js'
 
 export default {
   async upload (ctx) {
@@ -19,5 +20,8 @@ export default {
   },
   async update (ctx) {
     return await updateImpl.impl(ctx)
+  },
+  async list (ctx) {
+    return await listImpl.impl(ctx)
   }
 }

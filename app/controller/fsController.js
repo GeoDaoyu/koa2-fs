@@ -12,5 +12,8 @@ export default {
   },
   async moveFile (ctx) {
     ctx.body = await fsService.move(ctx)
+  },
+  async updateFile (ctx) {
+    ctx.body = await fsService.update(ctx)
   }
 }

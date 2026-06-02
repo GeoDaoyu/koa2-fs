@@ -9,5 +9,7 @@ const router = new Router()
   .delete('/:type/:filename', fsController.deleteFile)
   .delete('/:type/:username/:filename', fsController.deleteFile)
   .patch('/:type/:username/:filename', fsController.moveFile)
+  .put('/:type/:filename', fsController.updateFile)
+  .put('/:type/:username/:filename', fsController.updateFile)
 
 export default router
